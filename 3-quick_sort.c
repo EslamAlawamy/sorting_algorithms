@@ -23,16 +23,15 @@ void quick_sort(int *array, size_t size)
  */
 void quick_sort_helper(int *array, int low, int high, size_t size)
 {
-	int par;
+	int part;
 
 	if (low < high)
 	{
-		par = partition(array, low, high, size);
-		quick_sort_helper(array, low, par - 1, size);
-		quick_sort_helper(array, par + 1, high, size);
+		part = partition(array, low, high, size);
+		quick_sort_helper(array, low, part - 1, size);
+		quick_sort_helper(array, part + 1, high, size);
 	}
 }
-
 /**
  * partition - Lomuto partition scheme.
  * @array: pointer to array of intgers
@@ -41,32 +40,31 @@ void quick_sort_helper(int *array, int low, int high, size_t size)
  * @size: the size of array
  * Return: the index of pivot
  */
-int partition(size_t size, int *array, int low, int height)
+int partition(int *array, int low, int high, size_t size)
 {
-	int i, j, pivot;
+	int pivot, i, j;
 
 	i = low - 1;
-	pivot = array[height];
-	for (j = low; j < height; j++)
+	pivot = array[high];
+	for (j = low; j < high; j++)
 	{
 		if (array[j] < pivot)
 		{
 			i++;
 			if (array[i] != array[j])
 			{
-				swap_b(&array[i], &array[j]);
+				swap(&array[i], &array[j]);
 				print_array(array, size);
 			}
 		}
 	}
-	if (array[i + 1] != array[height])
+	if (array[i + 1] != array[high])
 	{
-		swap_b(&array[i + 1], &array[height]);
+		swap(&array[i + 1], &array[high]);
 		print_array(array, size);
 	}
 	return (i + 1);
 }
-
 
 /**
  * swap_b - function that swap
