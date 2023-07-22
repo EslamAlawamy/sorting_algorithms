@@ -36,7 +36,7 @@ void quick_sort_helper(int *array, int low, int high, size_t size)
  * partition - Lomuto partition scheme.
  * @array: pointer to array of intgers
  * @low: starting index of the partition
- * @height: etarting index of the partition
+ * @high: etarting index of the partition
  * @size: the size of array
  * Return: the index of pivot
  */
